@@ -6,7 +6,8 @@ import model.Locacao;
 import model.Passeio;
 
 public class ExercicioAgencia {
-    
+    private static int contH = 0, contP = 0, contL = 0; 
+
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         int opcao = -1;
@@ -15,7 +16,8 @@ public class ExercicioAgencia {
             System.out.println("========= Agência de Viagens =========");
             System.out.println("1 - Cadastrar hospedagem");
             System.out.println("2 - Cadastrar passeio");
-            System.out.println("3 - cadastrar locacao");
+            System.out.println("3 - Cadastrar locacao");
+            System.out.println("4 - Exibir contadores de cadastro");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -24,7 +26,6 @@ public class ExercicioAgencia {
             } catch (NumberFormatException e) {
                 opcao = -1;
             }
-
 
             try {
                 switch (opcao) {
@@ -36,6 +37,9 @@ public class ExercicioAgencia {
                         break;
                     case 3:
                         cadastrarLocacao(ler);
+                        break;
+                    case 4:
+                        exibirContador();
                         break;
                     case 0:
                         System.out.println("Encerrando sistema...");
@@ -63,6 +67,13 @@ public class ExercicioAgencia {
         return Integer.parseInt(ler.nextLine().trim());
     }
 
+    private static void exibirContador(){
+        System.out.println("=== Contadores de Cadastro ===");
+        System.out.println("Cadastro de Hospedagens: " + contH);
+        System.out.println("Cadastro de Passeios: " +contP);
+        System.out.println("Cadastro de Locações: " +contL);
+    }
+
     private static void cadastrarHospedagem(Scanner ler){
         System.out.println("=== Cadastro de Hospedagem ===");
         System.out.print("Codigo: ");
@@ -81,6 +92,7 @@ public class ExercicioAgencia {
         double percent = lerDouble(ler);
 
         Hospedagem h = new Hospedagem(cod, hospede, valorDiaria, qtdDias, percent);
+        contH++;
         System.out.println("Hospedagem cadastrada: " + h);
     }
 
@@ -102,6 +114,7 @@ public class ExercicioAgencia {
         double percent = lerDouble(ler);
 
         Passeio p = new Passeio(cod, desc, precoPessoa, qtdPessoa, percent);
+        contP++;
         System.out.println("Passeio cadastrado: " + p);
     }
 
@@ -123,8 +136,7 @@ public class ExercicioAgencia {
         double km = lerDouble(ler);
 
         Locacao l = new Locacao(cod, modelo, valorDiaria, qtdDias, km);
+        contL++;
         System.out.println("Locacao Cadastrada:" + l);
     }
-
-
 }
