@@ -110,7 +110,7 @@ public class Hospedagem {
                 ", Valor da Diaria = " + String.format("%.2f",valorDiaria) + 
                 ", Quantidade de Diarias = " + qtdDiarias +
                 ", Taxa Percentual de Serviço = " +taxaServicoPercentual+"%" +
-                ", Valor da Estadia = " + calcularValorEstadia() +
+                ", Valor da Estadia = " + String.format("%.2f",calcularValorEstadia()) +
                 '}';
     }
 }
